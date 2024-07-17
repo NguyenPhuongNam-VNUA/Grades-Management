@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('username')->nullable();  // Chỉ sử dụng cho admin
             $table->string('password')->nullable();  // Chỉ sử dụng cho admin
-            $table->foreignId('role_id')->constrained();
+            $table->foreignId('role_id');
             $table->string('fullname');
             $table->string('lecturer_code')->nullable()->unique();  // Chỉ sử dụng cho giảng viên
             $table->string('email')->unique();
