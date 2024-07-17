@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.pages.dashboard.index');
+});
+
+Route::get('/diem', function () {
+    return view('admin.pages.grades.index');
 });
