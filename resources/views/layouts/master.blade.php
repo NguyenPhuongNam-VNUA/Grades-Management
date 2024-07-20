@@ -1,19 +1,19 @@
 <!doctype html>
 <html lang="en">
 
-@include('admin.includes.head')
-
+@include('includes.head')
+@livewireStyles
 <body>
 
 <!--Main navbar-->
-@include('admin.includes.header')
+@include('includes.header')
 <!--/Main navbar-->
 
 <!-- Page content -->
 <div class="page-content">
 
     <!-- Main sidebar -->
-    @include('admin.includes.sidebar')
+    @include('includes.sidebar')
     <!-- /main sidebar -->
 
 
@@ -34,7 +34,7 @@
 
 
             <!-- Footer -->
-            @include('admin.includes.footer')
+            @include('includes.footer')
             <!-- /footer -->
 
         </div>
@@ -45,6 +45,6 @@
 
 </div>
 <!-- /page content -->
-
+@livewireScripts
 </body>
 </html>

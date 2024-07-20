@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('role_id');
             $table->string('fullname');
             $table->string('lecturer_code')->nullable()->unique();  // Chỉ sử dụng cho giảng viên
-            $table->string('email')->unique();
+            $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('address')->nullable();
             $table->string('phone_number')->nullable();

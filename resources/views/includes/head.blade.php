@@ -3,6 +3,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Hệ thống quản lý</title>
-    @include('admin.includes.script')
-    @include('admin.includes.style')
+    @include('includes.script')
+    @include('includes.style')
 </head>

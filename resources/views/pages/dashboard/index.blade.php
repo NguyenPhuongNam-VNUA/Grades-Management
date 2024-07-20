@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('layouts.master')
 
 @section('page-header')
     <div class="page-header page-header-light shadow">
@@ -53,7 +53,8 @@
 
                             </div>
                             <div class="content-action">
-                                <input type="file" class="custom-file-label custom-file-input">Thêm tệp
+                                <a href="" class="btn btn-teal"><i
+                                        class="ph-plus-circle me-1"></i> Tạo mới</a>
                             </div>
                         </div>
                     </div>

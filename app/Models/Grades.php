@@ -9,6 +9,17 @@ class Grades extends Model
 {
     use HasFactory;
 
+    const HEADINGS = [
+        'id'=> 'stt',
+        'student_code' => 'maSv',
+        'student_fullname' => 'hvt',
+        'student_email' => 'Email',
+        'attendance_score' => 'cc',
+        'midterm_score' => 'gk',
+        'final_score' => 'ck',
+        'average_of_subject' => 'tb',
+    ];
+
     protected $fillable = [
         'id',
         'student_code',
@@ -21,6 +32,11 @@ class Grades extends Model
         'rank',
     ];
 
+    public function classes()
+    {
+        return $this->belongsToMany(Classes::class);
+    }
+    
     public function subjects()
     {
         return $this->belongsToMany(Subject::class);
@@ -29,10 +45,5 @@ class Grades extends Model
     public function lecturers()
     {
         return $this->belongsToMany(User::class);
-    }
-    
-    public function classes()
-    {
-        return $this->belongsToMany(Classes::class);
     }
 }
