@@ -2,7 +2,7 @@
 <html lang="en">
 
 @include('includes.head')
-@livewireStyles
+
 <body>
 
 <!--Main navbar-->
@@ -36,7 +36,7 @@
             <!-- Footer -->
             @include('includes.footer')
             <!-- /footer -->
-
+            @yield('verify')
         </div>
         <!-- /inner content -->
 
@@ -45,6 +45,7 @@
 
 </div>
 <!-- /page content -->
-@livewireScripts
+
+@include('includes.script')
 </body>
 </html>

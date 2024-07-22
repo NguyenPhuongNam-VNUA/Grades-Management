@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GradesController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 
 // ...
 /*
@@ -29,8 +29,19 @@ Route::prefix('login')->group(function() {
 });
 
 Route::prefix('/')->middleware('admin')->group(function() {
-    Route::get('', [HomeController::class, 'index'])->name('dashboard');
-    Route::get('grades', [GradesController::class, 'index'])->name('grades.index');
-    Route::post('grades/import', [GradesController::class, 'import'])->name('grades.import');
-    Route::post('grades/send-scores', [GradesController::class, 'sendScores'])->name('grades.sendScores');
+    Route::prefix('users')->group(function() {
+        Route::get('', [UserController::class, 'index'])->name('users.index');
+        Route::get('create', [UserController::class, 'create'])->name('users.create');
+        Route::post('store', [UserController::class, 'store'])->name('users.store');
+        Route::get('edit/{id}', [UserController::class, 'edit'])->name('users.edit');
+        Route::post('update/{id}', [UserController::class, 'update'])->name('users.update');
+        Route::delete('delete/{id}', [UserController::class, 'delete'])->name('users.delete');
+
+    });
+    Route::prefix('grades')->group(function() {
+        Route::get('', [GradesController::class, 'index'])->name('grades.index');
+        Route::post('import', [GradesController::class, 'import'])->name('grades.import');
+        Route::post('send-scores', [GradesController::class, 'sendScores'])->name('grades.sendScores');
+        Route::post('reset-grades', [GradesController::class, 'resetGrades'])->name('grades.reset');
+    });
 });

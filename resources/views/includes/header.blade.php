@@ -24,11 +24,11 @@
                    </a>
 
                    <div class="dropdown-menu dropdown-menu-end">
-                       <a href="#" class="dropdown-item">
-                           <i class="ph-gear me-2"></i>
-                           Tài khoản
-                       </a>
-                       <div class="dropdown-divider"></div>
+{{--                       <a href="#" class="dropdown-item">--}}
+{{--                           <i class="ph-gear me-2"></i>--}}
+{{--                           Tài khoản--}}
+{{--                       </a>--}}
+{{--                       <div class="dropdown-divider"></div>--}}
 
                        <form action="{{ route('logout') }}" method="post">
                            @csrf

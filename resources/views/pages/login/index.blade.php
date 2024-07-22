@@ -15,8 +15,8 @@
                     <form action="{{ route('login.post') }}" method="POST">
                         @csrf
                         <h1>Đăng nhập</h1>
-                        <input type="text" name="username" placeholder="Tài khoản...">
-                        <input type="password" name="password" placeholder="Mật khẩu...">
+                        <input type="text" name="username" value="{{ old('username') }}" placeholder="Tài khoản...">
+                        <input type="password" name="password" value="{{ old('password') }}" placeholder="Mật khẩu...">
                         <button>Đăng nhập</button>
                     </form>
                 </div>
@@ -26,7 +26,10 @@
                     <form action="{{ route('login.post') }}" method="POST">
                         @csrf
                         <h1>Đăng nhập</h1>
-                        <input type="text" name="lecturer_code" placeholder="Nhập mã giảng viên">
+                        <input type="text" name="lecturer_code" placeholder="Nhập mã giảng viên" value="{{ old('lecturer_code') }}">
+                        @if($errors->has('lecturer_code') )
+                            <p class="error text-danger">{{ $errors->first('lecturer_code') }}</p>
+                        @endif
                         <button>Đăng nhập</button>
                     </form>
                 </div>

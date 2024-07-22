@@ -325,3 +325,7 @@ a {
 #webCifar-icon svg {
   max-width: 20px;
 }
+
+.text-danger {
+  color: red;
+}

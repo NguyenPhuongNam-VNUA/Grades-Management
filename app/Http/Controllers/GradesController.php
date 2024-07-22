@@ -17,7 +17,7 @@ class GradesController extends Controller
 {
     public function index(): View|Factory|Application
     {
-        $grades = Grades::paginate(1);
+        $grades = Grades::paginate(10);
         return view('pages.grades.index', compact('grades'));
     }
 
@@ -51,5 +51,12 @@ class GradesController extends Controller
         // }
 
         return redirect()->route('grades.index')->with('success', 'Đã bắt đầu gửi điểm cho sinh viên.');
+    }
+
+    public function resetGrades()
+    {
+        Grades::truncate();
+
+        return redirect()->route('grades.index')->with('success', 'Grades reset successfully');
     }
 }

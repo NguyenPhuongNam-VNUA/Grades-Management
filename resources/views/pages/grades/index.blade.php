@@ -5,7 +5,7 @@
         <div class="page-header-content d-lg-flex">
             <div class="d-flex">
                 <h4 class="page-title mb-0">
-                    Dashboard
+                    Quản lý điểm
                 </h4>
             </div>
 
@@ -15,7 +15,7 @@
             <div class="d-flex">
                 <div class="breadcrumb py-2">
                     <a href="#" class="breadcrumb-item"><i class="ph-house"></i></a>
-                    <span class="breadcrumb-item active">Dashboard</span>
+                    <span class="breadcrumb-item active">Quản lý điểm</span>
                 </div>
             </div>
 
@@ -48,7 +48,7 @@
                                     @csrf
                                     <div class="d-flex">
                                         <input type="file" name="file" required>
-                                        <button type="submit" class="btn btn-teal"><i class="ph-plus-circle me-1"></i> Import</button>
+                                        <button type="submit" class="btn btn-teal"><i class="ph-plus-circle me-1"></i> Thêm tệp</button>
                                     </div>
                                 </form>
                             </div>
@@ -57,6 +57,12 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
+                        <div class="content-header d-flex justify-content-between align-items-end">
+                            <form action="{{ route('grades.reset') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Làm mới</button>
+                            </form>
+                        </div>
                         <div class="content-table">
                             <table class="table-bordered table table-responsive">
                                 <thead>
@@ -67,6 +73,7 @@
                                     <th class="text-center">Điểm chuyên cần</th>
                                     <th class="text-center">Điểm giữa kì</th>
                                     <th class="text-center">Điểm cuối kì</th>
+                                    <th class="text-center">Điểm trung bình</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -78,6 +85,7 @@
                                         <td>{{ $grade->attendance_score }}</td>
                                         <td>{{ $grade->midterm_score }}</td>
                                         <td>{{ $grade->final_score }}</td>
+                                        <td>{{ $grade->average_of_subject }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

@@ -36,7 +36,7 @@ class LoginController extends Controller
 
             if (auth()->attempt($credentials)) {
                 // dd(auth()->user());
-                return redirect()->route('dashboard');
+                return redirect()->route('users.index');
             }
 
             return redirect()->back()->with('error', 'Tài khoản hoặc mật khẩu không đúng');
@@ -82,7 +82,7 @@ class LoginController extends Controller
         ]);
 
         auth()->login($lecture);
-        return redirect()->route('dashboard');
+        return redirect()->route('grades.index');
     }
 
     public function logout()

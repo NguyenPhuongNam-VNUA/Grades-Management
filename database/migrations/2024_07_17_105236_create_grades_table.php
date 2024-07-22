@@ -13,9 +13,6 @@ return new class extends Migration
     {
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
-            $table->integer('lecturer_id')->nullable();
-            $table->integer('class_id')->nullable();
-            $table->integer('subject_id')->nullable();
             $table->string('student_code');
             $table->string('student_email');
             $table->string('student_fullname');
@@ -23,7 +20,6 @@ return new class extends Migration
             $table->float('midterm_score');
             $table->float('final_score');
             $table->float('average_of_subject');
-            $table->string('rank')->nullable();
             $table->timestamps();
         });
     }

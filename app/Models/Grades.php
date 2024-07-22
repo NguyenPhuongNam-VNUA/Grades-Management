@@ -32,16 +32,7 @@ class Grades extends Model
         'rank',
     ];
 
-    public function classes()
-    {
-        return $this->belongsToMany(Classes::class);
-    }
-    
-    public function subjects()
-    {
-        return $this->belongsToMany(Subject::class);
-    }
-    
+
     public function lecturers()
     {
         return $this->belongsToMany(User::class);
