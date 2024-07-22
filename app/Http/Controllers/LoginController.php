@@ -84,4 +84,10 @@ class LoginController extends Controller
         auth()->login($lecture);
         return redirect()->route('dashboard');
     }
+
+    public function logout()
+    {
+        auth()->logout();
+        return redirect()->route('login.show');
+    }
 }

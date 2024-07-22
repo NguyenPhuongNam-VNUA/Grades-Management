@@ -17,7 +17,7 @@ class GradesController extends Controller
 {
     public function index(): View|Factory|Application
     {
-        $grades = Grades::all();
+        $grades = Grades::paginate(1);
         return view('pages.grades.index', compact('grades'));
     }
 
@@ -42,7 +42,7 @@ class GradesController extends Controller
 
     public function sendScores(Request $request)
     {
-        $grades = Grades::first(); 
+        $grades = Grades::first();
         Mail::to($grades->student_email)->queue(new GradeImportNotification($grades));
         //dd($grades);
         // $grades = Grades::all(); // Lấy tất cả các bản ghi grades

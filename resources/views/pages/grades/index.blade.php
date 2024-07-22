@@ -78,17 +78,16 @@
                                         <td>{{ $grade->attendance_score }}</td>
                                         <td>{{ $grade->midterm_score }}</td>
                                         <td>{{ $grade->final_score }}</td>
-                                    </tr> 
-                                @endforeach 
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
 
-                            {{-- <div class="d-flex justify-content-center align-items-center w-100 mt-3">
-
+                             <div class="d-flex justify-content-end align-items-center w-100 mt-3">
                                 <div class="pagination">
-                                    {{ $faculties->appends(request()->input())->links() }}
+                                    {{ $grades->appends(request()->input())->links() }}
                                 </div>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
