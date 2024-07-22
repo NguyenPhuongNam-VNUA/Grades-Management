@@ -16,10 +16,9 @@ use App\Http\Controllers\UserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-// Route::get('/login',function () {
-//     return view('pages.login.index');
-// });
+Route::get('/', function () {
+    return redirect('/admin');
+});
 
 Route::prefix('login')->group(function() {
     Route::get('', [LoginController::class, 'showLoginForm'])->name('login.show');
@@ -28,7 +27,10 @@ Route::prefix('login')->group(function() {
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 });
 
-Route::prefix('/')->middleware('admin')->group(function() {
+Route::prefix('/admin')->middleware('admin')->group(function() {
+    Route::get('', function() {
+        return redirect()->route('users.index');
+    })->name('admin.dashboard');
     Route::prefix('users')->group(function() {
         Route::get('', [UserController::class, 'index'])->name('users.index');
         Route::get('create', [UserController::class, 'create'])->name('users.create');

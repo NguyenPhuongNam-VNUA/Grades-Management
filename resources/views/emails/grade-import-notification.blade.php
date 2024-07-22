@@ -43,6 +43,7 @@
     <p>Xin chào <strong>{{ $student_name }}</strong>,</p>
 
     <div class="details">
+        <p>Môn học: <b>{{ $subject_name }}</b></p>
         <p>Dưới đây là điểm của bạn:</p>
         <p><strong>Mã sinh viên:</strong> {{ $student_code }}</p>
         <p><strong>Họ và tên:</strong> {{ $student_name }}</p>

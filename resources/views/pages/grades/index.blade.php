@@ -36,6 +36,13 @@
                                     <div class="col-12 col-md-8">
                                         <form action="{{ route('grades.sendScores') }}" method="POST">
                                             @csrf
+                                            <div class="mb-3">
+                                                <label for="subject_name" class="form-label">Tên môn học</label>
+                                                <input type="text" class="form-control" id="subject_name" name="subject_name" placeholder="Nhập tên môn học...">
+                                            </div>
+                                            @if($errors->has('subject_name'))
+                                                <p class="error text text-danger">{{ $errors->first('subject_name') }}</p>
+                                            @endif
                                             <button type="submit" class="btn btn-primary">Gửi điểm</button>
                                         </form>
                                     </div>
@@ -105,3 +112,4 @@
 
     </div>
 @endsection
+

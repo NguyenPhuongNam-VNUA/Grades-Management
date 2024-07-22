@@ -42,13 +42,22 @@ class GradesController extends Controller
 
     public function sendScores(Request $request)
     {
-        $grades = Grades::first();
-        Mail::to($grades->student_email)->queue(new GradeImportNotification($grades));
+//        $grades = Grades::first();
+//        Mail::to($grades->student_email)->queue(new GradeImportNotification($grades));
         //dd($grades);
-        // $grades = Grades::all(); // Lấy tất cả các bản ghi grades
-        // foreach ($grades as $grade) {
-        //     Mail::to($grade->student_email)->queue(new GradeImportNotification($grade));
-        // }
+        $rule = [
+            'subject_name' => 'required'
+        ];
+        $mesage = [
+            'subject_name.required' => 'Vui lòng nhập tên môn học'
+        ];
+        $request->validate($rule, $mesage);
+        $subject_name = $request->subject_name;
+
+        $grades = Grades::all(); // Lấy tất cả các bản ghi grades
+        foreach ($grades as $grade) {
+            Mail::to($grade->student_email)->queue(new GradeImportNotification($grade, $subject_name));
+        }
 
         return redirect()->route('grades.index')->with('success', 'Đã bắt đầu gửi điểm cho sinh viên.');
     }

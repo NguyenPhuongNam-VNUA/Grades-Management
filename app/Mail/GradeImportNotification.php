@@ -13,15 +13,17 @@ class GradeImportNotification extends Mailable
     use Queueable, SerializesModels;
 
     public $grade;
+    public $subject_name;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Grades $grade)
+    public function __construct(Grades $grade, $subject_name)
     {
         $this->grade = $grade;
+        $this->subject_name = $subject_name;
     }
 
     /**
@@ -39,7 +41,7 @@ class GradeImportNotification extends Mailable
                         'midterm_score' => $this->grade->midterm_score,
                         'final_score' => $this->grade->final_score,
                         'average_of_subject' => $this->grade->average_of_subject,
-                        'rank' => $this->grade->rank,
+                        'subject_name' => $this->subject_name
                     ]);
     }
 }
