@@ -82,7 +82,7 @@ class LoginController extends Controller
         ]);
 
         auth()->login($lecture);
-        return redirect()->route('grades.index');
+        return redirect()->route('admin.dashboard');
     }
 
     public function logout()

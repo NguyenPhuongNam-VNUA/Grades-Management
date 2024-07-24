@@ -33,29 +33,50 @@
                         <div class="content-header d-flex justify-content-between align-items-end">
                             <div class="content-filter w-50">
                                 <div class="row">
-                                    <div class="col-12 col-md-8">
-                                        <form action="{{ route('grades.sendScores') }}" method="POST">
+                                    <div class="col-12">
+                                        <form action="{{ route('grades.sendScores') }}" method="POST" enctype="multipart/form-data">
                                             @csrf
-                                            <div class="mb-3">
-                                                <label for="subject_name" class="form-label">Tên môn học</label>
-                                                <input type="text" class="form-control" id="subject_name" name="subject_name" placeholder="Nhập tên môn học...">
+                                            <div class="mt-2">
+                                                <button type="submit" class="btn btn-primary">Gửi điểm</button>
                                             </div>
-                                            @if($errors->has('subject_name'))
-                                                <p class="error text text-danger">{{ $errors->first('subject_name') }}</p>
-                                            @endif
-                                            <button type="submit" class="btn btn-primary">Gửi điểm</button>
                                         </form>
                                     </div>
                                 </div>
-
                             </div>
 
-                            <div class="content-action">
+                            <div class="content-action w-75">
                                 <form action="{{ route('grades.import') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    <div class="d-flex">
-                                        <input type="file" name="file" required>
-                                        <button type="submit" class="btn btn-teal"><i class="ph-plus-circle me-1"></i> Thêm tệp</button>
+                                    <div class="row mb-3">
+                                        <div class="col-md-8 mb-2">
+                                            <select class="form-select form-select-lg" name="subject" id="subject">
+                                                <option value="">Chọn môn học</option>
+                                                @foreach($subjects as $subject)
+                                                    <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @if($errors->has('subject'))
+                                                <p class="error text text-danger">{{ $errors->first('subject') }}</p>
+                                            @endif
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <select class="form-select form-select-lg" name="class" id="class">
+                                                <option value="">Chọn lớp học</option>
+                                                @foreach($classes as $class)
+                                                    <option value="{{ $class->id }}">{{ $class->code }}</option>
+                                                @endforeach
+                                            </select>
+                                            @if($errors->has('class'))
+                                                <p class="error text-danger">{{ $errors->first('class') }}</p>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center ml-auto">
+                                        <input type="file" name="file" class="form-control mb-2">
+                                        @if($errors->has('file'))
+                                            <p class="error text-danger">{{ $errors->first('file') }}</p>
+                                        @endif
+                                        <button type="submit" class="btn btn-teal mb-2"><i class="ph-plus-circle me-0"></i> Thêm</button>
                                     </div>
                                 </form>
                             </div>
@@ -67,7 +88,7 @@
                         <div class="content-header d-flex justify-content-between align-items-end">
                             <form action="{{ route('grades.reset') }}" method="POST">
                                 @csrf
-                                <button type="submit" class="btn btn-danger">Làm mới</button>
+                                <button type="submit" class="btn btn-danger mb-2">Làm mới</button>
                             </form>
                         </div>
                         <div class="content-table">

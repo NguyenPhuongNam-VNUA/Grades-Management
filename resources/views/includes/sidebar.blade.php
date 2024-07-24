@@ -32,11 +32,47 @@
                     <i class="ph-dots-three sidebar-resize-show"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('grades.index') }}" class="nav-link active">
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                        <i class="ph-gradient"></i>
+                        <span>
+                            Trang chính
+                        </span>
+                    </a>
+                </li>
+               <li><hr></li>
+                <li class="nav-item-header pt-0">
+                    <div class="text-uppercase fs-sm lh-sm opacity-50 sidebar-resize-hide"></div>
+                    <i class="ph-dots-three sidebar-resize-show"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('grades.index') }}" class="nav-link {{ request()->routeIs('grades.index') ? 'active' : '' }}">
                         <i class="ph-gradient"></i>
                         <span>
                             Quản lý điểm
-                            <span class="d-block fw-normal opacity-50">No pending orders</span>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item-header pt-0">
+                    <div class="text-uppercase fs-sm lh-sm opacity-50 sidebar-resize-hide"></div>
+                    <i class="ph-dots-three sidebar-resize-show"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('classes.index') }}" class="nav-link {{ request()->routeIs('classes.index') ? 'active' : '' }}">
+                        <i class="ph-student"></i>
+                        <span>
+                            Quản lý lớp học
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item-header pt-0">
+                    <div class="text-uppercase fs-sm lh-sm opacity-50 sidebar-resize-hide"></div>
+                    <i class="ph-dots-three sidebar-resize-show"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('subjects.index') }}" class="nav-link {{ request()->routeIs('subjects.index') ? 'active' : '' }}">
+                        <i class="ph-suitcase"></i>
+                        <span>
+                            Quản lý môn học
                         </span>
                     </a>
                 </li>

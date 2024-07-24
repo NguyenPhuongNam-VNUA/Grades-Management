@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Grades extends Model
 {
@@ -29,12 +31,17 @@ class Grades extends Model
         'midterm_score',
         'final_score',
         'average_of_subject',
-        'rank',
+        'class_id',
+        'subject_id',
     ];
 
-
-    public function lecturers()
+    public function subjects(): BelongsToMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(Subject::class,'grades_subject','grade_id','subject_id');
+    }
+
+    public function class(): BelongsTo
+    {
+        return $this->belongsTo(Classes::class);
     }
 }

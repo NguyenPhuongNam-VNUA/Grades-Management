@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\Models\Grades;
+use App\Models\Subject;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -20,10 +21,11 @@ class GradeImportNotification extends Mailable
      *
      * @return void
      */
-    public function __construct(Grades $grade, $subject_name)
+    public function __construct(Grades $grade)
     {
+        $subject_name = new Subject();
         $this->grade = $grade;
-        $this->subject_name = $subject_name;
+        $this->subject_name = $subject_name->find($grade->subject_id)->name;
     }
 
     /**
@@ -41,7 +43,7 @@ class GradeImportNotification extends Mailable
                         'midterm_score' => $this->grade->midterm_score,
                         'final_score' => $this->grade->final_score,
                         'average_of_subject' => $this->grade->average_of_subject,
-                        'subject_name' => $this->subject_name
+                        'subject_name' => $this->subject_name,
                     ]);
     }
 }
